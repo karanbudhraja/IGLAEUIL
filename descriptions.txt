@@ -1,0 +1,248 @@
+Message: this looks like a green hemisphere
+Message: this is a three dimensional solid rectangle
+Message: a blue cylinder
+Message: looks like blue rectangle
+Message: red half pipe
+Message: green solid cube
+Message: this is a three dimensional red cube with six sides
+Message: this is a blue long stripped rectangle
+Message: a green long strip
+Message: a solid triangular object
+Message: A blue thin rectangle
+Message: this looks like a corner of the solid green triangular shape
+Message: A red cylinder
+Message: this is another green rectangle
+Message: A red solid triangle shaped object
+Message: A long blue rectangle
+Message: This looks like blue solid triangle
+Message: this is a red hemisphere not blue
+
+Message: red cylinder
+Message: green cuboid
+Message: blue cshape
+Message: greeny triangle
+Message: red eye
+Message: red triangle
+Message: red cube
+Message: blue cylinder
+Message: green cshape
+Message: blue cylinder
+Message: blue cuboid
+Message: red cshape
+Message: red cube
+Message: blue not rectangle
+Message: blue not cube
+Message: green triangle
+Message: green cube
+Message: green cuboid
+Message: green cuboid
+Message: blue cuboid
+Message: blue cuboid
+Message: red apple
+
+Message: this is a red half pipe placed horizontally so it looks like a rectangle
+Message: i am showing you a green cuboid which is a 3d rectangle
+Message: you see a red hemisphere now
+Message: here is not green but a blue cuboid
+Message: this is a red cube which is much smaller than a cuboid
+Message: this is a sideways placed thin cuboid
+Message: a blue cylinder like this looks the same from all angles
+Message: this is another blue cylinder but placed flat this time
+Message: this is a green traingle and not a cube]
+Message: if you like half pipes then here is a blue one for you
+Message: this is a red triangle and not a cuboid
+Message: here is a green cube
+Message: another cylinder here is a red one this time
+Message: this is a blue cuboid placed flat on the table
+Message: this green hemisphere is the opposite of a half pipe
+Message: here is another simple red object which in this case is a cube
+Message: there are too many rectangle and cuboid examples here like this green one
+Message: this is a red apple but for some reason it is placed upside down
+Message: this is a blue traingle placed side ways
+Message: this is a green triangle but it looks like a cuboid because of the angle at which it is placed
+Message: here we are back to a simple green cuboid
+
+Message: red rectangle with cyclinder cut out of it
+Message: blue rectangle
+Message: green triangle
+Message: green half cube
+Message: green rectangle
+Message: red cyclinder
+Message: blue rectangle
+Message: green triangle 3d
+Message: red cube
+Message: green cube
+Message: blue rectangle
+Message: red cube
+Message: red triangle 3d
+Message: blue rectangle with cyclinder cut out of it
+Message: blue cyclinder
+Message: blue rectangle
+Message: red half-circle 3d
+Message: green rectangle
+Message: red circular object
+
+Message: A blue three dimensional rectangular block
+Message: A green three dimensional block kept horizontally
+Message: A blue cylindrical object placed vertically
+Message: A red semi-cylinder placed on it's flat side
+Message: A blue three dimensional rectangle placed vertically
+Message: A red cube placed along it's diagonal axis
+Message: A red mini half-pipe
+Message: A blue wedge placed along it's long base
+Message: A blue half-pipe model
+Message: A green semi-cylinder
+Message: A red blurry cylinder placed vertically
+Message: a red cube which has nothing amazing to be said about it
+Message: A red wedge placed along it's major base
+Message: a green plank oriented away from me
+Message: ^[g^[r^[e^[e^[n^[[3;3~^[a^[d^[f^[a^[^[^[^[^[n^[v^[^A^[^A^[^[ A green triangular bump
+Message: A blue long plank placed with long axis perpendicular to line of sight
+Message: green rectangular cube placed vertical
+Message: blue short plank placed along it's narrower surface
+Message: a green cube
+Message: a green wedge placed on it's longer base
+Message: a red apple placed on it's tip
+Message: blue rectangluar plank again
+Message:
+
+Person 7
+Message: A soft edged cube from a birds eye perspective showing only 2 sides
+Message: A 3 dimensional rectangular prism from a birds eye perspective only showing two sides
+Message: A blue cyclinder from a birds eye view standing on one of its faces
+Message: An organic red sphere
+Message: A rectangular prism with a half of a circle cut out of ouf the center. The view conssits of birds eye perspective showing on two sides
+Message: A right sided rectangular prisim taken from a birds eye perspective, showing only two sides
+Message: Half of a cylinder split hoizontially down the center of one of the faces. It lies on its belly
+Message: A rectangular prisim from a birds eye view that shows 3 of its sides
+
+Message: The object has a blue half pipe design
+Message: This is a green cylinder in a standing position 
+Message: The object is a green cuboid placed lying down
+Message: This is a green cuboid    
+Message: Looking at a blue triangle
+Message: The object is a red cube
+Message: A small green triangle
+Message: A blue cylinder in a standing position
+Message: A red semicircular object
+Message: The object is a blue cuboid lying down
+Message: A standing green triangle
+Message: it is blue half pipe shape
+Message: a solid blue cube
+Message: its red cube
+Message: green cylinder
+Message: it looks like green cuboid
+Message: a green three dimensional cuboid
+Message: blue solid cylinder
+Message: blue cuboid
+Message: look at this red cuboid
+Message: a blue lond strip
+Message: green kind of strip
+Message: red flat cuboid
+Message: red cylinder
+Message: this is a red triangle
+Message: it is a green triangle not a blue triangle
+Message: blue triangle not green triangle
+Message: red half pipe not blue
+Message: green triangle
+Message: red half sphere not green
+Message: green half spehre
+Message: The red cylinder is placed in an upright position
+Message: A simple green cube
+Message: The object is a red triangle
+Message: A flat blue cuboid is placed here
+Message: I can see a red half pipe design
+Message: A green semicircular object is in front of me
+Message: This is a flat red object 
+Message: A cube is blue and flat
+Message: This is an apple which is red in color
+Message: 
+
+Message: it is blue half pipe shape
+Message: a solid blue cube
+Message: its red cube
+Message: green cylinder
+Message: it looks like green cuboid
+Message: a green three dimensional cuboid
+Message: blue solid cylinder
+Message: blue cuboid
+Message: look at this red cuboid
+Message: a blue lond strip
+Message: green kind of strip
+Message: red flat cuboid
+Message: red cylinder
+Message: this is a red triangle
+Message: it is a green triangle not a blue triangle
+Message: blue triangle not green triangle
+Message: red half pipe not blue
+Message: green triangle
+Message: red half sphere not green
+Message: green half spehre
+Message:     
+
+Message: this is a red cylinder
+Message: i am showing you a green hemisphere
+Message: this object is a green three dimensional triangle
+Message: speaking of hemispheres here is a red one
+Message: this image is a green triangle
+Message: and this is a blue triangle
+Message: and this is a red triangle
+Message: look at this green cuboid
+Message: this is a green cylinder
+Message: i am showing you a blue cylinder    
+Message: this is a long red cuboid
+Message: what you see is a long blue cuboid
+Message: this is a blue cuboid        
+Message: this weird object is a red half-pipe
+Message: this is a green cuboid
+Message: this is an image of a blue cuboid
+Message: this symmetric object is a red cube
+Message: here is a green cube
+Message: look at this blue half-pipe
+Message: this is a shiny red apple
+Message: 
+ 
+
+Message: red cshape
+Message: green cuboid
+Message: blue cuboid
+Message: red apple
+Message: red cube
+Message: green triangle
+Message: blue cshape
+Message: blue cylinder
+Message: red triangle
+Message: green triangle
+Message: green cuboid
+Message: blue cuboid
+Message: red eye
+Message: green cube
+Message: red cylinder
+Message: blue cuboid
+Message: red cuboid
+Message: blue triangle
+Message: green cylinder
+Message: green eye
+Message: exit
+
+Message: green eye
+Message: green cylinder
+Message: blue triangle
+Message: red cuboid
+Message: blue cylinder
+Message: this is a blue half-pipe
+Message: it is a red apple
+Message: a red half-pipe
+Message: its red cube
+Message: a green triangle
+
+Message: The object is a red cylinder    
+Message: This is a green cube-like thing
+Message: This is a fat blue cube
+Message: This is a thin blue cube placed in a horizontal manner
+Message: Looks like a blue thin cuboid
+Message: this is a red triangle
+Message: this is a red hemisphere
+Message: this object is a green cuboid
+Message: what you see is a green triangle
+Message: this symmetric object is a green cube
