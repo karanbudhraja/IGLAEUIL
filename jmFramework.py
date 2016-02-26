@@ -3,8 +3,8 @@
 			  Referer to http://cynthia.matuszek.org/Pubs/MatuszekICML2012.pdf, http://cynthia.matuszek.org/Slides/MatuszekFutureOfHRIWorkshopICRA2012.pdf
 '''
 
-__author__	= "Karan K. Budhraja,Nisha Pillai"
-__email__	= "karanb1@umbc.edu,npillai1@umbc.edu"
+__author__	= "Karan K. Budhraja, Nisha Pillai"
+__email__	= "karanb1@umbc.edu, npillai1@umbc.edu"
 
 # libraries used
 from abc import ABCMeta
@@ -14,7 +14,6 @@ from lib.image.shape import shapeUtils as su
 import sets
 from sklearn.linear_model import SGDClassifier
 import numpy as np
-
 
 # ObjWord constants
 # possible example polarities
