@@ -110,7 +110,7 @@ public:
  * - <number> Serial number of the device to open.
  * - -noviewer Disable viewer window.
  */
-int main(int argc, char *argv[])
+void** start_connection(int argc, char *argv[])
 /// [main]
 {
   std::string program_path(argv[0]);
@@ -128,6 +128,8 @@ int main(int argc, char *argv[])
   {
     binpath = program_path.substr(0, executable_name_idx);
   }
+
+  /* --------------------------- karan marking end of initialization ---------------------- */
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
   // avoid flooing the very slow Windows console with debug messages
@@ -330,22 +332,26 @@ int main(int argc, char *argv[])
   viewer_enabled = false;
 #endif
 
-/// [loop start]
-  while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
-  {
-    read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted, registered);
-  }
-/// [loop end]
+  /* --------------------------- karan marking end of initialization ---------------------- */
 
-  close_connection(dev, registration);
+  void *kinectConfiguration[11];
+  kinectConfiguration[0] = (void*)&listener;
+  kinectConfiguration[1] = (void*)&frames;
+  kinectConfiguration[2] = (void*)&enable_rgb;
+  kinectConfiguration[3] = (void*)&enable_depth;
+  kinectConfiguration[4] = (void*)&registration;
+  kinectConfiguration[5] = (void*)&framecount;
+  kinectConfiguration[6] = (void*)&protonect_shutdown;
+  kinectConfiguration[7] = (void*)&viewer;
+  kinectConfiguration[8] = (void*)&viewer_enabled;
+  kinectConfiguration[9] = (void*)&undistorted;
+  kinectConfiguration[10] = (void*)&registered;
 
-  return 0;
+  return kinectConfiguration;
 }
 
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
 {
-  /*----------------------- karan marking start of closing --------------------- */
-
   // TODO: restarting ir stream doesn't work!
   // TODO: bad things will happen, if frame listeners are freed before dev->stop() :(
 /// [stop]
@@ -354,13 +360,10 @@ void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registr
 /// [stop]
 
   delete registration;
-
-  /*----------------------- karan marking end of closing --------------------- */
 }
 
 void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered)
 {
-  /*----------------------- karan marking start of read loop --------------------- */
     listener.waitForNewFrame(frames);
     libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
     libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
@@ -405,5 +408,34 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 /// [loop end]
     listener.release(frames);
     /** libfreenect2::this_thread::sleep_for(libfreenect2::chrono::milliseconds(100)); */
-  /*----------------------- karan marking end of read loop --------------------- */
+}
+
+int main(int argc, char *argv[])
+{
+  /* initialize connection */
+  void *kinectConfiguraton[11] = start_connection(int argc, char *argv[]);
+
+  libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
+  libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
+  bool enable_rgb = *((bool*)kinectConfiguration[2]);
+  bool enable_depth = *((bool*)kinectConfiguration[3]);
+  libfreenect2::Registration *registration = *((libfreenect2::Registration*)kinectConfiguration[4]);
+  size_t framecount = *((size_t*)kinectConfiguration[5]);
+  bool protonect_shutdown = *((bool*)kinectConfiguration[6]);
+  Viewer viewer = *((Viewer*)kinectConfiguration[7]);
+  bool viewer_enabled = *((bool*)kinectConfiguration[8]);
+  libfreenect2::Frame undistorted = *((libfreenect2::FrameMap*)kinectConfiguration[9]);
+  libfreenect2::Frame registered = *((libfreenect2::FrameMap*)kinectConfiguration[10]);
+
+  /* read data */
+  while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
+  {
+    read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted, registered);
+  }
+
+  /* close connection */
+  close_connection(dev, registration);
+
+  /* default return value */
+  return 0;
 }
