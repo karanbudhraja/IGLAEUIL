@@ -389,7 +389,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-void close_connection(Freenect2Device *dev,  libfreenect2::Registration *registration)
+void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
 {
   /*----------------------- karan marking start of closing --------------------- */
 
