@@ -420,7 +420,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 int main(int argc, char *argv[])
 {
   /* initialize connection */
-  void *kinectConfiguraton[11] = start_connection(int argc, char *argv[]);
+  void *kinectConfiguraton[11] = start_connection(argc, argv);
 
   libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
