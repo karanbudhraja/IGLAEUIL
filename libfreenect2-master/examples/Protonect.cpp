@@ -43,7 +43,7 @@
 
 /* karan adding prototypes of created functions */
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
-void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted);
+void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
@@ -333,7 +333,7 @@ int main(int argc, char *argv[])
 /// [loop start]
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
-    read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted);
+    read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted, registered);
   }
 /// [loop end]
 
@@ -358,7 +358,7 @@ void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registr
   /*----------------------- karan marking end of closing --------------------- */
 }
 
-void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted)
+void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered)
 {
   /*----------------------- karan marking start of read loop --------------------- */
     listener.waitForNewFrame(frames);
@@ -380,7 +380,8 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
       if (framecount % 100 == 0)
         std::cout << "The viewer is turned off. Received " << framecount << " frames. Ctrl-C to stop." << std::endl;
       listener.release(frames);
-      continue;
+      //continue;
+      return;
     }
 
 #ifdef EXAMPLES_WITH_OPENGL_SUPPORT
