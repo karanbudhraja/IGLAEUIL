@@ -176,7 +176,8 @@ void** start_connection(int argc, char *argv[])
       if (pipeline)
       {
         std::cerr << "-gpu must be specified before pipeline argument" << std::endl;
-        return -1;
+        //return -1;
+	return NULL;
       }
       deviceId = atoi(argv[argI] + 5);
     }
@@ -236,7 +237,8 @@ void** start_connection(int argc, char *argv[])
       framemax = strtol(argv[argI], NULL, 0);
       if (framemax == 0) {
         std::cerr << "invalid frame count '" << argv[argI] << "'" << std::endl;
-        return -1;
+        //return -1;
+	return NULL;
       }
     }
     else
@@ -248,14 +250,16 @@ void** start_connection(int argc, char *argv[])
   if (!enable_rgb && !enable_depth)
   {
     std::cerr << "Disabling both streams is not allowed!" << std::endl;
-    return -1;
+    //return -1;
+    return NULL;
   }
 
 /// [discovery]
   if(freenect2.enumerateDevices() == 0)
   {
     std::cout << "no device connected!" << std::endl;
-    return -1;
+    //return -1;
+    return NULL;
   }
 
   if (serial == "")
@@ -278,7 +282,8 @@ void** start_connection(int argc, char *argv[])
   if(dev == 0)
   {
     std::cout << "failure opening device!" << std::endl;
-    return -1;
+    //return -1;
+    return NULL;
   }
 
   devtopause = dev;
@@ -306,12 +311,14 @@ void** start_connection(int argc, char *argv[])
   if (enable_rgb && enable_depth)
   {
     if (!dev->start())
-      return -1;
+      //return -1;
+      return NULL;
   }
   else
   {
     if (!dev->startStreams(enable_rgb, enable_depth))
-      return -1;
+      //return -1;
+      return NULL;
   }
 
   std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
