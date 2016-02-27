@@ -424,8 +424,8 @@ int main(int argc, char *argv[])
   bool protonect_shutdown = *((bool*)kinectConfiguration[6]);
   Viewer viewer = *((Viewer*)kinectConfiguration[7]);
   bool viewer_enabled = *((bool*)kinectConfiguration[8]);
-  libfreenect2::Frame undistorted = *((libfreenect2::FrameMap*)kinectConfiguration[9]);
-  libfreenect2::Frame registered = *((libfreenect2::FrameMap*)kinectConfiguration[10]);
+  libfreenect2::Frame undistorted = *((libfreenect2::Frame*)kinectConfiguration[9]);
+  libfreenect2::Frame registered = *((libfreenect2::Frame*)kinectConfiguration[10]);
 
   /* read data */
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
