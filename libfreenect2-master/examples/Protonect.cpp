@@ -43,6 +43,7 @@
 
 /* karan adding prototypes of created functions */
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
+void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted);
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
@@ -329,13 +330,37 @@ int main(int argc, char *argv[])
   viewer_enabled = false;
 #endif
 
-
-  /*----------------------- karan marking start of read loop --------------------- */
-
-
 /// [loop start]
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
+    read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted);
+  }
+/// [loop end]
+
+  close_connection(dev, registration);
+
+  return 0;
+}
+
+void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
+{
+  /*----------------------- karan marking start of closing --------------------- */
+
+  // TODO: restarting ir stream doesn't work!
+  // TODO: bad things will happen, if frame listeners are freed before dev->stop() :(
+/// [stop]
+  dev->stop();
+  dev->close();
+/// [stop]
+
+  delete registration;
+
+  /*----------------------- karan marking end of closing --------------------- */
+}
+
+void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted)
+{
+  /*----------------------- karan marking start of read loop --------------------- */
     listener.waitForNewFrame(frames);
     libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
     libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
@@ -379,28 +404,5 @@ int main(int argc, char *argv[])
 /// [loop end]
     listener.release(frames);
     /** libfreenect2::this_thread::sleep_for(libfreenect2::chrono::milliseconds(100)); */
-  }
-/// [loop end]
-
   /*----------------------- karan marking end of read loop --------------------- */
-
-  close_connection(dev, registration);
-
-  return 0;
-}
-
-void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
-{
-  /*----------------------- karan marking start of closing --------------------- */
-
-  // TODO: restarting ir stream doesn't work!
-  // TODO: bad things will happen, if frame listeners are freed before dev->stop() :(
-/// [stop]
-  dev->stop();
-  dev->close();
-/// [stop]
-
-  delete registration;
-
-  /*----------------------- karan marking end of closing --------------------- */
 }
