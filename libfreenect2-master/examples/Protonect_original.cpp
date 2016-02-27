@@ -41,8 +41,6 @@
 #include "viewer.h"
 #endif
 
-/* karan adding prototypes of created functions */
-void close_connection(Freenect2Device *dev,  libfreenect2::Registration *registration);
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
@@ -329,10 +327,6 @@ int main(int argc, char *argv[])
   viewer_enabled = false;
 #endif
 
-
-  /*----------------------- karan marking start of read loop --------------------- */
-
-
 /// [loop start]
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
@@ -382,17 +376,6 @@ int main(int argc, char *argv[])
   }
 /// [loop end]
 
-  /*----------------------- karan marking end of read loop --------------------- */
-
-  close_connection(dev, registration);
-
-  return 0;
-}
-
-void close_connection(Freenect2Device *dev,  libfreenect2::Registration *registration)
-{
-  /*----------------------- karan marking start of closing --------------------- */
-
   // TODO: restarting ir stream doesn't work!
   // TODO: bad things will happen, if frame listeners are freed before dev->stop() :(
 /// [stop]
@@ -402,5 +385,5 @@ void close_connection(Freenect2Device *dev,  libfreenect2::Registration *registr
 
   delete registration;
 
-  /*----------------------- karan marking end of closing --------------------- */
+  return 0;
 }
