@@ -42,7 +42,7 @@
 #endif
 
 /* karan adding prototypes of created functions */
-void close_connection(Freenect2Device *dev,  libfreenect2::Registration *registration);
+void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
