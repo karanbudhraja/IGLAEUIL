@@ -460,7 +460,7 @@ int main(int argc, char *argv[])
   //size_t *framemax = *((size_t*)kinectConfiguration[12]);
 
   /* print everything */
-  std::cout<<"\n printing in main";
+  std::cout<<"\n printing in main1";
   //std::cout<<"\n"<<(&listener);
   //std::cout<<"\n"<<(&frames);
   std::cout<<"\n"<<(enable_rgb);
