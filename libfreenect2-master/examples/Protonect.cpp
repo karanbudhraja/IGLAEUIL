@@ -42,8 +42,8 @@
 #endif
 
 /* karan adding prototypes of created functions */
-void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
-void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
+//void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
+//void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
 /* kinect configuration storage */
 struct kinectConfigStruct
@@ -500,9 +500,9 @@ int main(int argc, char *argv[])
   libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
   size_t framemax = *(pKinectConfiguration->framemax);
   
-  return 0;
+  //return 0;
 
-#if 0
+#if 1
   /* read data */
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
