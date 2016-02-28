@@ -374,7 +374,7 @@ void*** start_connection(int argc, char *argv[])
 
   std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
 
-  return &kinectConfiguration;
+  return (void***)(&kinectConfiguration);
 }
 
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
