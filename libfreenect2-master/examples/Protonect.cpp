@@ -464,7 +464,7 @@ int main(int argc, char *argv[])
   //std::cout<<"\n printing in main";
   //std::cout<<"\n"<<(&listener);
   //std::cout<<"\n"<<(&frames);
-  //std::cout<<"\n"<<(enable_rgb);
+  std::cout<<"\n"<<(enable_rgb);
   //std::cout<<"\n"<<(enable_depth);
   //std::cout<<"\n"<<(registration);
   //std::cout<<"\n"<<(&framecount);
