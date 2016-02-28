@@ -110,7 +110,7 @@ public:
  * - <number> Serial number of the device to open.
  * - -noviewer Disable viewer window.
  */
-void** start_connection(int argc, char *argv[])
+void*** start_connection(int argc, char *argv[])
 /// [main]
 {
   std::string program_path(argv[0]);
@@ -372,7 +372,9 @@ void** start_connection(int argc, char *argv[])
   //kinectConfiguration[11] = (void*)dev;
   //kinectConfiguration[12] = (void*)&framemax;
 
-  return kinectConfiguration;
+  std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
+
+  return &kinectConfiguration;
 }
 
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
@@ -438,11 +440,13 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 int main(int argc, char *argv[])
 {
   /* initialize connection */
-  void *kinectConfiguration[] = start_connection(argc, argv);
+  void ***kinectConfiguration = start_connection(argc, argv);
+
+  std::cout<<"\n configuration variable address in function: "<<kinectConfiguration;
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
-  bool *enable_rgb = (bool*)(kinectConfiguration[2]);
+  //bool *enable_rgb = (bool*)(kinectConfiguration[2]);
   //bool *enable_depth = *((bool*)kinectConfiguration[3]);
   //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
   //size_t framecount = *((size_t*)kinectConfiguration[5]);
@@ -458,7 +462,7 @@ int main(int argc, char *argv[])
   //std::cout<<"\n printing in main";
   //std::cout<<"\n"<<(&listener);
   //std::cout<<"\n"<<(&frames);
-  std::cout<<"\n"<<(enable_rgb);
+  //std::cout<<"\n"<<(enable_rgb);
   //std::cout<<"\n"<<(enable_depth);
   //std::cout<<"\n"<<(registration);
   //std::cout<<"\n"<<(&framecount);
