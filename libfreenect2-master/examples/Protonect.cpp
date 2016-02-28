@@ -48,7 +48,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 /* kinect configuration storage */
 struct kinectConfigStruct
 {
-  libfreenect2::SyncMultiFrameListener listener;
+  libfreenect2::SyncMultiFrameListener *listener;
   libfreenect2::FrameMap frames;
   bool enable_rgb;
   bool enable_depth;
@@ -62,7 +62,7 @@ struct kinectConfigStruct
   libfreenect2::Freenect2Device *dev;
   size_t framemax;
 
-  kinectConfigStruct(int types):undistorted(512,424,4), registered(512, 424, 4), listener(types)
+  kinectConfigStruct():undistorted(512,424,4), registered(512, 424, 4)
   {
   }
 };
@@ -384,8 +384,8 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   */
 
   /* assign configuration values */
-  kinectConfigStruct kinectConfiguration(types);
-  kinectConfiguration.listener = listener;
+  kinectConfigStruct kinectConfiguration;
+  kinectConfiguration.listener = &listener;
   kinectConfiguration.frames = frames;
   kinectConfiguration.enable_rgb = enable_rgb;
   kinectConfiguration.enable_depth = enable_depth;
@@ -416,9 +416,9 @@ void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registr
   delete registration;
 }
 
-void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered)
+void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered)
 {
-    listener.waitForNewFrame(frames);
+    listener->waitForNewFrame(frames);
     libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
     libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
     libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
@@ -436,7 +436,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
     {
       if (framecount % 100 == 0)
         std::cout << "The viewer is turned off. Received " << framecount << " frames. Ctrl-C to stop." << std::endl;
-      listener.release(frames);
+      listener->release(frames);
       //continue;
       return;
     }
@@ -460,7 +460,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 #endif
 
 /// [loop end]
-    listener.release(frames);
+    listener->release(frames);
     /** libfreenect2::this_thread::sleep_for(libfreenect2::chrono::milliseconds(100)); */
 }
 
