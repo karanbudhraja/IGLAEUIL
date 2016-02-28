@@ -487,6 +487,7 @@ int main(int argc, char *argv[])
 
   libfreenect2::SyncMultiFrameListener *listener = pKinectConfiguration->listener;
   //libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
+  libfreenect2::FrameMap frames;
   bool enable_rgb = *(pKinectConfiguration->enable_rgb);
   bool enable_depth = *(pKinectConfiguration->enable_depth);
   libfreenect2::Registration *registration = (pKinectConfiguration->registration);
