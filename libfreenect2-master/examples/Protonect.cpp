@@ -485,13 +485,13 @@ int main(int argc, char *argv[])
   bool enable_depth = *(pKinectConfiguration->enable_depth);
   libfreenect2::Registration *registration = (pKinectConfiguration->registration);
   size_t framecount = *(pKinectConfiguration->framecount);
-  bool *protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
+  bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
   Viewer viewer = *(pKinectConfiguration->viewer);
   bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
   libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
   libfreenect2::Frame registered = *(pKinectConfiguration->registered);
   libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
-  size_t *framemax = *(pKinectConfiguration->framemax);
+  size_t framemax = *(pKinectConfiguration->framemax);
 
   return 0;
 
