@@ -48,24 +48,21 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 /* kinect configuration storage */
 struct kinectConfigStruct
 {
-  libfreenect2::SyncMultiFrameListener *listener;
-  libfreenect2::FrameMap *frames;
-  bool *enable_rgb;
-  bool *enable_depth;
+  libfreenect2::SyncMultiFrameListener listener;
+  libfreenect2::FrameMap frames;
+  bool enable_rgb;
+  bool enable_depth;
   libfreenect2::Registration *registration;
-  size_t *framecount;
-  bool *protonect_shutdown;
-  Viewer *viewer;
-  bool *viewer_enabled;
-  libfreenect2::Frame *undistorted;
-  libfreenect2::Frame *registered;
+  size_t framecount;
+  bool protonect_shutdown;
+  Viewer viewer;
+  bool viewer_enabled;
+  libfreenect2::Frame undistorted;
+  libfreenect2::Frame registered;
   libfreenect2::Freenect2Device *dev;
-  size_t *framemax;
+  size_t framemax;
 
-  libfreenect2::Frame undistorted1;
-  //libfreenect2::SyncMultiFrameListener listener1;
-
-  kinectConfigStruct():undistorted1(512,424,4)
+  kinectConfigStruct():undistorted(512,424,4), registered(512, 424, 4)
   {
   }
 };
