@@ -447,7 +447,7 @@ int main(int argc, char *argv[])
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
-  bool *enable_rgb = (bool*)(kinectConfiguration[2]);
+  bool *enable_rgb = (bool*)(kinectConfiguration + 2*sizeof(*kinectConfiguration));
   //bool *enable_depth = *((bool*)kinectConfiguration[3]);
   //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
   //size_t framecount = *((size_t*)kinectConfiguration[5]);
