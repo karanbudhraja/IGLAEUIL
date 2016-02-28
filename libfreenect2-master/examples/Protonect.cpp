@@ -373,7 +373,7 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   //std::cout<<"\n"<<(dev);
   //std::cout<<"\n"<<(&framemax);
 
-  kinectConfigurationStruct kinectConfiguration;
+  kinectConfigStruct kinectConfiguration;
 
   kinectConfiguration.enable_rgb = &enable_rgb;
 
