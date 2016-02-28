@@ -473,7 +473,7 @@ int main(int argc, char *argv[])
 
   return 0;
 
-
+#if 0
   /* read data */
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
@@ -485,4 +485,5 @@ int main(int argc, char *argv[])
 
   /* default return value */
   return 0;
+#endif
 }
