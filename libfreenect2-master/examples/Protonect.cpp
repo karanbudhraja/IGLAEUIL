@@ -61,6 +61,9 @@ typedef struct
   libfreenect2::Frame *registered;
   libfreenect2::Freenect2Device *dev;
   size_t *framemax;
+
+  libfreenect2::Frame undistorted1(512, 424, 4), registered1(512, 424, 4);
+
 } kinectConfigStruct;
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
@@ -483,22 +486,20 @@ int main(int argc, char *argv[])
   std::cout<<"\n"<<pKinectConfiguration->framemax;
   */
 
-  /*
-  libfreenect2::SyncMultiFrameListener listener = *(pKinectConfiguration->listener);
-  libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
-  bool enable_rgb = *(pKinectConfiguration->enable_rgb);
-  bool enable_depth = *(pKinectConfiguration->enable_depth);
-  libfreenect2::Registration *registration = (pKinectConfiguration->registration);
-  size_t framecount = *(pKinectConfiguration->framecount);
-  bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
-  Viewer viewer = *(pKinectConfiguration->viewer);
-  bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
-  libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
-  libfreenect2::Frame registered = *(pKinectConfiguration->registered);
-  libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
-  size_t framemax = *(pKinectConfiguration->framemax);
-  */
-
+  //libfreenect2::SyncMultiFrameListener listener = *(pKinectConfiguration->listener);
+  //libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
+  //bool enable_rgb = *(pKinectConfiguration->enable_rgb);
+  //bool enable_depth = *(pKinectConfiguration->enable_depth);
+  //libfreenect2::Registration *registration = (pKinectConfiguration->registration);
+  //size_t framecount = *(pKinectConfiguration->framecount);
+  //bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
+  //Viewer viewer = *(pKinectConfiguration->viewer);
+  //bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
+  //libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
+  //libfreenect2::Frame registered = *(pKinectConfiguration->registered);
+  //libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
+  //size_t framemax = *(pKinectConfiguration->framemax);
+  
   return 0;
 
 #if 0
