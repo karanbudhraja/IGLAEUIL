@@ -48,19 +48,19 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 /* kinect configuration storage */
 typedef struct
 {
-  libfreenect2::SyncMultiFrameListener listener;
-  libfreenect2::FrameMap frames;
-  bool enable_rgb;
-  bool enable_depth;
+  libfreenect2::SyncMultiFrameListener *listener;
+  libfreenect2::FrameMap *frames;
+  bool *enable_rgb;
+  bool *enable_depth;
   libfreenect2::Registration *registration;
-  size_t framecount;
-  bool protonect_shutdown;
-  Viewer viewer;
-  bool viewer_enabled;
-  libfreenect2::Frame undistorted;
-  libfreenect2::Frame registered;
+  size_t *framecount;
+  bool *protonect_shutdown;
+  Viewer *viewer;
+  bool *viewer_enabled;
+  libfreenect2::Frame *undistorted;
+  libfreenect2::Frame *registered;
   libfreenect2::Freenect2Device *dev;
-  size_t framemax;
+  size_t *framemax;
 } kinectConfigStruct;
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
@@ -379,19 +379,19 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
 
   /* assign configuration values */
   kinectConfigStruct kinectConfiguration;
-  kinectConfiguration.listener = listener;
-  kinectConfiguration.frames = frames;
-  kinectConfiguration.enable_rgb = enable_rgb;
-  kinectConfiguration.enable_depth = enable_depth;
+  kinectConfiguration.listener = &listener;
+  kinectConfiguration.frames = &frames;
+  kinectConfiguration.enable_rgb = &enable_rgb;
+  kinectConfiguration.enable_depth = &enable_depth;
   kinectConfiguration.registration = registration;
-  kinectConfiguration.framecount = framecount;
-  kinectConfiguration.protonect_shutdown = protonect_shutdown;
-  kinectConfiguration.viewer = viewer;
-  kinectConfiguration.viewer_enabled = viewer_enabled;
-  kinectConfiguration.undistorted = undistorted;
-  kinectConfiguration.registered = registered;
+  kinectConfiguration.framecount = &framecount;
+  kinectConfiguration.protonect_shutdown = &protonect_shutdown;
+  kinectConfiguration.viewer = &viewer;
+  kinectConfiguration.viewer_enabled = &viewer_enabled;
+  kinectConfiguration.undistorted = &undistorted;
+  kinectConfiguration.registered = &registered;
   kinectConfiguration.dev = dev;
-  kinectConfiguration.framemax = framemax;
+  kinectConfiguration.framemax = &framemax;
 
   std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
 
