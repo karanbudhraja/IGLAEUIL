@@ -59,6 +59,8 @@ typedef struct
   bool *viewer_enabled;
   libfreenect2::Frame *undistorted;
   libfreenect2::Frame *registered;
+  libfreenect2::Freenect2Device *dev;
+  size_t *framemax;
 } kinectConfigStruct;
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
@@ -162,7 +164,7 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
     libfreenect2::setGlobalLogger(filelogger);
   else
     delete filelogger;
-/// [file logging]
+  /// [file logging]
 
 /// [context]
   libfreenect2::Freenect2 freenect2;
