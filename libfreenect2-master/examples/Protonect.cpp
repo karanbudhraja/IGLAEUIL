@@ -443,8 +443,7 @@ int main(int argc, char *argv[])
   void ***pKinectConfiguration = start_connection(argc, argv);
   void **kinectConfiguration = *pKinectConfiguration;
 
-  std::cout<<"\n configuration variable address in function1: "<<pKinectConfiguration;
-  std::cout<<"\n configuration variable address in function2: "<<kinectConfiguration;
+  std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
@@ -461,7 +460,7 @@ int main(int argc, char *argv[])
   //size_t *framemax = *((size_t*)kinectConfiguration[12]);
 
   /* print everything */
-  //std::cout<<"\n printing in main";
+  std::cout<<"\n printing in main";
   //std::cout<<"\n"<<(&listener);
   //std::cout<<"\n"<<(&frames);
   std::cout<<"\n"<<(enable_rgb);
