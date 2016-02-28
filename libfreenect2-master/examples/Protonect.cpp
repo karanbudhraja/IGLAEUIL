@@ -443,33 +443,33 @@ int main(int argc, char *argv[])
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
-  //bool enable_rgb = *((bool*)kinectConfiguration[2]);
-  //bool enable_depth = *((bool*)kinectConfiguration[3]);
+  bool *enable_rgb = (bool*)kinectConfiguration[2];
+  bool *enable_depth = (bool*)kinectConfiguration[3];
   //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
   //size_t framecount = *((size_t*)kinectConfiguration[5]);
-  //bool protonect_shutdown = *((bool*)kinectConfiguration[6]);
+  bool *protonect_shutdown = (bool*)kinectConfiguration[6];
   //Viewer viewer = *((Viewer*)kinectConfiguration[7]);
-  //bool viewer_enabled = *((bool*)kinectConfiguration[8]);
+  bool viewer_enabled = (bool*)kinectConfiguration[8];
   //libfreenect2::Frame undistorted = *((libfreenect2::Frame*)kinectConfiguration[9]);
   //libfreenect2::Frame registered = *((libfreenect2::Frame*)kinectConfiguration[10]);
   //libfreenect2::Freenect2Device *dev = ((libfreenect2::Freenect2Device*)kinectConfiguration[11]);
-  //size_t framemax = *((size_t*)kinectConfiguration[12]);
+  size_t *framemax = (size_t*)kinectConfiguration[12];
 
   /* print everything */
   //std::cout<<"\n printing in main";
   //std::cout<<"\n"<<(&listener);
   //std::cout<<"\n"<<(&frames);
-  //std::cout<<"\n"<<(&enable_rgb);
-  //std::cout<<"\n"<<(&enable_depth);
+  std::cout<<"\n"<<(enable_rgb);
+  std::cout<<"\n"<<(enable_depth);
   //std::cout<<"\n"<<(registration);
   //std::cout<<"\n"<<(&framecount);
-  //std::cout<<"\n"<<(&protonect_shutdown);
+  std::cout<<"\n"<<(protonect_shutdown);
   //std::cout<<"\n"<<(&viewer);
-  //std::cout<<"\n"<<(&viewer_enabled);
+  std::cout<<"\n"<<(viewer_enabled);
   //std::cout<<"\n"<<(&undistorted);
   //std::cout<<"\n"<<(&registered);
   //std::cout<<"\n"<<(dev);
-  //std::cout<<"\n"<<(&framemax);
+  std::cout<<"\n"<<(framemax);
 
   return 0;
 
