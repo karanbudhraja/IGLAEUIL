@@ -341,6 +341,22 @@ void** start_connection(int argc, char *argv[])
 
   /* --------------------------- karan marking end of initialization ---------------------- */
 
+  /* print everything */
+  std::cout<<"\n printing in initialization";
+  std::cout<<"\n"<<listener;
+  std::cout<<"\n"<<frames;
+  std::cout<<"\n"<<enable_rgb;
+  std::cout<<"\n"<<enable_depth;
+  std::cout<<"\n"<<registration;
+  std::cout<<"\n"<<framecount;
+  std::cout<<"\n"<<protonect_shutdown;
+  std::cout<<"\n"<<viewer;
+  std::cout<<"\n"<<viewer_enabled;
+  std::cout<<"\n"<<undistorted;
+  std::cout<<"\n"<<registered;
+  std::cout<<"\n"<<dev;
+  std::cout<<"\n"<<framemax;
+
   void *kinectConfiguration[13];
   kinectConfiguration[0] = (void*)&listener;
   kinectConfiguration[1] = (void*)&frames;
@@ -438,6 +454,26 @@ int main(int argc, char *argv[])
   libfreenect2::Frame registered = *((libfreenect2::Frame*)kinectConfiguration[10]);
   libfreenect2::Freenect2Device *dev = ((libfreenect2::Freenect2Device*)kinectConfiguration[11]);
   size_t framemax = *((size_t*)kinectConfiguration[12]);
+
+  /* print everything */
+  std::cout<<"\n printing in main";
+  std::cout<<"\n"<<listener;
+  std::cout<<"\n"<<frames;
+  std::cout<<"\n"<<enable_rgb;
+  std::cout<<"\n"<<enable_depth;
+  std::cout<<"\n"<<registration;
+  std::cout<<"\n"<<framecount;
+  std::cout<<"\n"<<protonect_shutdown;
+  std::cout<<"\n"<<viewer;
+  std::cout<<"\n"<<viewer_enabled;
+  std::cout<<"\n"<<undistorted;
+  std::cout<<"\n"<<registered;
+  std::cout<<"\n"<<dev;
+  std::cout<<"\n"<<framemax;
+
+
+  return 0;
+
 
   /* read data */
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
