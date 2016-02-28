@@ -49,12 +49,12 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 typedef struct
 {
   libfreenect2::SyncMultiFrameListener *listener;
-  libfreenect2::FrameMap *frames
+  libfreenect2::FrameMap *frames;
   bool *enable_rgb;
   bool *enable_depth;
   libfreenect2::Registration *registration;
   size_t *framecount;
-  bool *protonect_shutdown
+  bool *protonect_shutdown;
   Viewer *viewer;
   bool *viewer_enabled;
   libfreenect2::Frame *undistorted;
@@ -460,7 +460,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 int main(int argc, char *argv[])
 {
   /* initialize connection */
-  kinectConfigurationStruct *pKinectConfiguration = start_connection(argc, argv);
+  kinectConfigStruct *pKinectConfiguration = start_connection(argc, argv);
 
   std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
 
