@@ -63,12 +63,7 @@ struct kinectConfigStruct
   size_t *framemax;
 
   libfreenect2::Frame undistorted1;
-
-  kinectConfigStruct()
-  {
-    undistorted1 = new libfreenect2::Frame(512, 424, 4);
-  }
-
+  libfreenect2::SyncMultiFrameListener listener1;
 };
 
 typedef struct kinectConfigStruct kinectConfigStruct;

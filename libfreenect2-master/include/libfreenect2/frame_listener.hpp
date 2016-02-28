@@ -77,6 +77,7 @@ class LIBFREENECT2_API Frame
 
   Frame(void)
   {
+    Frame(512, 424, 4);
   }
 
   /** Construct a new frame.
