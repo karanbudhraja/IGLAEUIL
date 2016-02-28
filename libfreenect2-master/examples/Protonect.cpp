@@ -359,38 +359,35 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
 
   /* print everything */
   std::cout<<"\n printing in initialization";
-  //std::cout<<"\n"<<(&listener);
-  //std::cout<<"\n"<<(&frames);
+  std::cout<<"\n"<<(&listener);
+  std::cout<<"\n"<<(&frames);
   std::cout<<"\n"<<(&enable_rgb);
-  //std::cout<<"\n"<<(&enable_depth);
-  //std::cout<<"\n"<<(registration);
-  //std::cout<<"\n"<<(&framecount);
-  //std::cout<<"\n"<<(&protonect_shutdown);
-  //std::cout<<"\n"<<(&viewer);
-  //std::cout<<"\n"<<(&viewer_enabled);
-  //std::cout<<"\n"<<(&undistorted);
-  //std::cout<<"\n"<<(&registered);
-  //std::cout<<"\n"<<(dev);
-  //std::cout<<"\n"<<(&framemax);
+  std::cout<<"\n"<<(&enable_depth);
+  std::cout<<"\n"<<(registration);
+  std::cout<<"\n"<<(&framecount);
+  std::cout<<"\n"<<(&protonect_shutdown);
+  std::cout<<"\n"<<(&viewer);
+  std::cout<<"\n"<<(&viewer_enabled);
+  std::cout<<"\n"<<(&undistorted);
+  std::cout<<"\n"<<(&registered);
+  std::cout<<"\n"<<(dev);
+  std::cout<<"\n"<<(&framemax);
 
+  /* assign configuration values */
   kinectConfigStruct kinectConfiguration;
-
+  kinectConfiguration.listener = &listener;
+  kinectConfiguration.frames = &frames;
   kinectConfiguration.enable_rgb = &enable_rgb;
-
-  //void *kinectConfiguration[13];
-  //kinectConfiguration[0] = (void*)&listener;
-  //kinectConfiguration[1] = (void*)&frames;
-  //kinectConfiguration[2] = (void*)(&enable_rgb);
-  //kinectConfiguration[3] = (void*)&enable_depth;
-  //kinectConfiguration[4] = (void*)registration;
-  //kinectConfiguration[5] = (void*)&framecount;
-  //kinectConfiguration[6] = (void*)&protonect_shutdown;
-  //kinectConfiguration[7] = (void*)&viewer;
-  //kinectConfiguration[8] = (void*)&viewer_enabled;
-  //kinectConfiguration[9] = (void*)&undistorted;
-  //kinectConfiguration[10] = (void*)&registered;
-  //kinectConfiguration[11] = (void*)dev;
-  //kinectConfiguration[12] = (void*)&framemax;
+  kinectConfiguration.enable_depth = &enable_depth;
+  kinectConfiguration.registration = registration;
+  kinectConfiguration.framecount = &framecount;
+  kinectConfiguration.protonect_shutdown = &protonect_shutdown;
+  kinectConfiguration.viewer = &viewer;
+  kinectConfiguration.viewer_enabled = &viewer_enabled;
+  kinectConfiguration.undistorted = &undistorted;
+  kinectConfiguration.registered = &registered;
+  kinectConfiguration.dev = dev;
+  kinectConfiguration.framemax = &framemax;
 
   std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
 
@@ -465,10 +462,20 @@ int main(int argc, char *argv[])
   std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
 
   /* print everything */
-  std::cout<<"\n printing in initialization";
-  //std::cout<<"\n"<<(&listener);
-  //std::cout<<"\n"<<(&frames);
-  std::cout<<"\n"<<(pKinectConfiguration->enable_rgb);
+  std::cout<<"\n printing in main";
+  std::cout<<"\n"<<pKinectConfiguration->listener;
+  std::cout<<"\n"<<pKinectConfiguration->frames;
+  std::cout<<"\n"<<pKinectConfiguration->enable_rgb;
+  std::cout<<"\n"<<pKinectConfiguration->enable_depth;
+  std::cout<<"\n"<<pKinectConfiguration->registration;
+  std::cout<<"\n"<<pKinectConfiguration->framecount;
+  std::cout<<"\n"<<pKinectConfiguration->protonect_shutdown;
+  std::cout<<"\n"<<pKinectConfiguration->viewer;
+  std::cout<<"\n"<<pKinectConfiguration->viewer_enabled;
+  std::cout<<"\n"<<pKinectConfiguration->undistorted;
+  std::cout<<"\n"<<pKinectConfiguration->registered;
+  std::cout<<"\n"<<pKinectConfiguration->dev;
+  std::cout<<"\n"<<pKinectConfiguration->framemax;
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
