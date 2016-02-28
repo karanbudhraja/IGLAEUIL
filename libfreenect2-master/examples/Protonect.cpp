@@ -62,9 +62,9 @@ struct kinectConfigStruct
   libfreenect2::Freenect2Device *dev;
   size_t *framemax;
 
-  libfreenect2::Frame undistroted1;
+  libfreenect2::Frame undistorted1;
 
-  kinectCOnfigStruct()
+  kinectConfigStruct()
   {
     undistorted1 = new libfreenect2::Frame(512, 424, 4);
   }
