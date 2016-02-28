@@ -440,7 +440,8 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 int main(int argc, char *argv[])
 {
   /* initialize connection */
-  void ***kinectConfiguration = start_connection(argc, argv);
+  void ***pKinectConfiguration = start_connection(argc, argv);
+  void **kinectConfiguration = *pKinectConfiguration;
 
   std::cout<<"\n configuration variable address in function: "<<kinectConfiguration;
 
