@@ -46,7 +46,7 @@ void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registr
 void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
 /* kinect configuration storage */
-typedef struct
+struct kinectConfigStruct
 {
   libfreenect2::SyncMultiFrameListener *listener;
   libfreenect2::FrameMap *frames;
@@ -62,9 +62,16 @@ typedef struct
   libfreenect2::Freenect2Device *dev;
   size_t *framemax;
 
-  libfreenect2::Frame undistorted1(512, 424, 4), registered1(512, 424, 4);
+  libfreenect2::Frame undistroted1;
 
-} kinectConfigStruct;
+  kinectCOnfigStruct()
+  {
+    undistorted1 = new libfreenect2::Frame(512, 424, 4);
+  }
+
+};
+
+typedef struct kinectConfigStruct kinectConfigStruct;
 
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
