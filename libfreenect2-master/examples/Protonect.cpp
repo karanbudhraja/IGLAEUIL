@@ -479,21 +479,20 @@ int main(int argc, char *argv[])
   std::cout<<"\n"<<pKinectConfiguration->dev;
   std::cout<<"\n"<<pKinectConfiguration->framemax;
 
-  //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
-  //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
-  //bool *enable_rgb = (bool*)(kinectConfiguration + 2*sizeof(void*));
-  //bool *enable_depth = *((bool*)kinectConfiguration[3]);
-  //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
-  //size_t framecount = *((size_t*)kinectConfiguration[5]);
-  //bool *protonect_shutdown = *((bool*)kinectConfiguration[6]);
-  //Viewer viewer = *((Viewer*)kinectConfiguration[7]);
-  //bool viewer_enabled = *((bool*)kinectConfiguration[8]);
-  //libfreenect2::Frame undistorted = *((libfreenect2::Frame*)kinectConfiguration[9]);
-  //libfreenect2::Frame registered = *((libfreenect2::Frame*)kinectConfiguration[10]);
-  //libfreenect2::Freenect2Device *dev = ((libfreenect2::Freenect2Device*)kinectConfiguration[11]);
-  //size_t *framemax = *((size_t*)kinectConfiguration[12]);
+  libfreenect2::SyncMultiFrameListener listener = *(pKinectConfiguration->listener);
+  libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
+  bool enable_rgb = *(pKinectConfiguration->enable_rgb);
+  bool enable_depth = *(pKinectConfiguration->enable_depth);
+  libfreenect2::Registration *registration = (pKinectConfiguration->registration);
+  size_t framecount = *(pKinectConfiguration->framecount);
+  bool *protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
+  Viewer viewer = *(pKinectConfiguration->viewer);
+  bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
+  libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
+  libfreenect2::Frame registered = *(pKinectConfiguration->registered);
+  libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
+  size_t *framemax = *(pKinectConfiguration->framemax);
 
-  
   return 0;
 
 #if 0
