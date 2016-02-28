@@ -45,6 +45,22 @@
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
 void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
+/* kinect configuration storage */
+typedef struct
+{
+  libfreenect2::SyncMultiFrameListener *listener;
+  libfreenect2::FrameMap *frames
+  bool *enable_rgb;
+  bool *enable_depth;
+  libfreenect2::Registration *registration;
+  size_t *framecount;
+  bool *protonect_shutdown
+  Viewer *viewer;
+  bool *viewer_enabled;
+  libfreenect2::Frame *undistorted;
+  libfreenect2::Frame *registered;
+} kinectConfigStruct;
+
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
 void sigint_handler(int s)
@@ -110,7 +126,7 @@ public:
  * - <number> Serial number of the device to open.
  * - -noviewer Disable viewer window.
  */
-void*** start_connection(int argc, char *argv[])
+kinectConfigStruct* start_connection(int argc, char *argv[])
 /// [main]
 {
   std::string program_path(argv[0]);
@@ -357,10 +373,14 @@ void*** start_connection(int argc, char *argv[])
   //std::cout<<"\n"<<(dev);
   //std::cout<<"\n"<<(&framemax);
 
-  void *kinectConfiguration[13];
+  kinectConfigurationStruct kinectConfiguration;
+
+  kinectConfiguration.enable_rgb = &enable_rgb;
+
+  //void *kinectConfiguration[13];
   //kinectConfiguration[0] = (void*)&listener;
   //kinectConfiguration[1] = (void*)&frames;
-  kinectConfiguration[2] = (void*)(&enable_rgb);
+  //kinectConfiguration[2] = (void*)(&enable_rgb);
   //kinectConfiguration[3] = (void*)&enable_depth;
   //kinectConfiguration[4] = (void*)registration;
   //kinectConfiguration[5] = (void*)&framecount;
@@ -374,7 +394,7 @@ void*** start_connection(int argc, char *argv[])
 
   std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
 
-  return (void***)(&kinectConfiguration);
+  return &kinectConfiguration;
 }
 
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration)
@@ -440,14 +460,19 @@ void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::F
 int main(int argc, char *argv[])
 {
   /* initialize connection */
-  void ***pKinectConfiguration = start_connection(argc, argv);
-  void **kinectConfiguration = *pKinectConfiguration;
+  kinectConfigurationStruct *pKinectConfiguration = start_connection(argc, argv);
 
   std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
 
+  /* print everything */
+  std::cout<<"\n printing in initialization";
+  //std::cout<<"\n"<<(&listener);
+  //std::cout<<"\n"<<(&frames);
+  std::cout<<"\n"<<(pKinectConfiguration->enable_rgb);
+
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
-  bool *enable_rgb = (bool*)(kinectConfiguration + 2*sizeof(void*));
+  //bool *enable_rgb = (bool*)(kinectConfiguration + 2*sizeof(void*));
   //bool *enable_depth = *((bool*)kinectConfiguration[3]);
   //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
   //size_t framecount = *((size_t*)kinectConfiguration[5]);
@@ -459,22 +484,7 @@ int main(int argc, char *argv[])
   //libfreenect2::Freenect2Device *dev = ((libfreenect2::Freenect2Device*)kinectConfiguration[11]);
   //size_t *framemax = *((size_t*)kinectConfiguration[12]);
 
-  /* print everything */
-  std::cout<<"\n printing in main";
-  //std::cout<<"\n"<<(&listener);
-  //std::cout<<"\n"<<(&frames);
-  std::cout<<"\n"<<(enable_rgb);
-  //std::cout<<"\n"<<(enable_depth);
-  //std::cout<<"\n"<<(registration);
-  //std::cout<<"\n"<<(&framecount);
-  //std::cout<<"\n"<<(protonect_shutdown);
-  //std::cout<<"\n"<<(&viewer);
-  //std::cout<<"\n"<<(viewer_enabled);
-  //std::cout<<"\n"<<(&undistorted);
-  //std::cout<<"\n"<<(&registered);
-  //std::cout<<"\n"<<(dev);
-  //std::cout<<"\n"<<(framemax);
-
+  
   return 0;
 
 #if 0
