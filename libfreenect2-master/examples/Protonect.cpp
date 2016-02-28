@@ -65,9 +65,8 @@ struct kinectConfigStruct
   libfreenect2::Frame undistorted1;
   //libfreenect2::SyncMultiFrameListener listener1;
 
-  kinectConfigStruct()
+  kinectConfigStruct():undistorted1(512,424,4)
   {
-    undistorted.Frame(512,424,4);
   }
 };
 
