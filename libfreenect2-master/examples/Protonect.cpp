@@ -343,19 +343,19 @@ void** start_connection(int argc, char *argv[])
 
   /* print everything */
   std::cout<<"\n printing in initialization";
-  std::cout<<"\n"<<listener;
-  std::cout<<"\n"<<frames;
-  std::cout<<"\n"<<enable_rgb;
-  std::cout<<"\n"<<enable_depth;
-  std::cout<<"\n"<<registration;
-  std::cout<<"\n"<<framecount;
-  std::cout<<"\n"<<protonect_shutdown;
-  std::cout<<"\n"<<viewer;
-  std::cout<<"\n"<<viewer_enabled;
-  std::cout<<"\n"<<undistorted;
-  std::cout<<"\n"<<registered;
-  std::cout<<"\n"<<dev;
-  std::cout<<"\n"<<framemax;
+  std::cout<<"\n"<<(&listener);
+  std::cout<<"\n"<<(&frames);
+  std::cout<<"\n"<<(&enable_rgb);
+  std::cout<<"\n"<<(&enable_depth);
+  std::cout<<"\n"<<(registration);
+  std::cout<<"\n"<<(&framecount);
+  std::cout<<"\n"<<(&protonect_shutdown);
+  std::cout<<"\n"<<(&viewer);
+  std::cout<<"\n"<<(&viewer_enabled);
+  std::cout<<"\n"<<(&undistorted);
+  std::cout<<"\n"<<(&registered);
+  std::cout<<"\n"<<(dev);
+  std::cout<<"\n"<<(&framemax);
 
   void *kinectConfiguration[13];
   kinectConfiguration[0] = (void*)&listener;
@@ -456,7 +456,7 @@ int main(int argc, char *argv[])
   size_t framemax = *((size_t*)kinectConfiguration[12]);
 
   /* print everything */
-  std::cout<<"\n printing in main";
+  /*  std::cout<<"\n printing in main";
   std::cout<<"\n"<<listener;
   std::cout<<"\n"<<frames;
   std::cout<<"\n"<<enable_rgb;
@@ -470,7 +470,7 @@ int main(int argc, char *argv[])
   std::cout<<"\n"<<registered;
   std::cout<<"\n"<<dev;
   std::cout<<"\n"<<framemax;
-
+  */
 
   return 0;
 
