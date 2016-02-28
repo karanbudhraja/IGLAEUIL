@@ -440,7 +440,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::F
 #ifdef EXAMPLES_WITH_OPENGL_SUPPORT
     if (enable_rgb)
     {
-      viewer.addFrame("RGB", rgb);
+      viewer->addFrame("RGB", rgb);
     }
     if (enable_depth)
     {
@@ -452,7 +452,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::F
       viewer->addFrame("registered", registered);
     }
 
-    protonect_shutdown = protonect_shutdown || viewer.render();
+    protonect_shutdown = protonect_shutdown || viewer->render();
 #endif
 
 /// [loop end]
