@@ -443,7 +443,8 @@ int main(int argc, char *argv[])
   void ***pKinectConfiguration = start_connection(argc, argv);
   void **kinectConfiguration = *pKinectConfiguration;
 
-  std::cout<<"\n configuration variable address in function: "<<kinectConfiguration;
+  std::cout<<"\n configuration variable address in function1: "<<pKinectConfiguration;
+  std::cout<<"\n configuration variable address in function2: "<<kinectConfiguration;
 
   //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
   //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
