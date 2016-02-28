@@ -43,28 +43,24 @@
 
 /* karan adding prototypes of created functions */
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
-void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
+void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
 /* kinect configuration storage */
 struct kinectConfigStruct
 {
   libfreenect2::SyncMultiFrameListener *listener;
-  libfreenect2::FrameMap frames;
-  bool enable_rgb;
-  bool enable_depth;
+  libfreenect2::FrameMap *frames;
+  bool *enable_rgb;
+  bool *enable_depth;
   libfreenect2::Registration *registration;
-  size_t framecount;
-  bool protonect_shutdown;
-  Viewer viewer;
-  bool viewer_enabled;
-  libfreenect2::Frame undistorted;
-  libfreenect2::Frame registered;
+  size_t *framecount;
+  bool *protonect_shutdown;
+  Viewer *viewer;
+  bool *viewer_enabled;
+  libfreenect2::Frame *undistorted;
+  libfreenect2::Frame *registered;
   libfreenect2::Freenect2Device *dev;
-  size_t framemax;
-
-  kinectConfigStruct():undistorted(512,424,4), registered(512, 424, 4)
-  {
-  }
+  size_t *framemax;
 };
 
 typedef struct kinectConfigStruct kinectConfigStruct;
@@ -416,7 +412,7 @@ void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registr
   delete registration;
 }
 
-void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered)
+void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer *viewer, bool &viewer_enabled, libfreenect2::Frame *undistorted, libfreenect2::Frame *registered)
 {
     listener->waitForNewFrame(frames);
     libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
@@ -427,7 +423,7 @@ void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::F
     if (enable_rgb && enable_depth)
     {
 /// [registration]
-      registration->apply(rgb, depth, &undistorted, &registered);
+      registration->apply(rgb, depth, undistorted, registered);
 /// [registration]
     }
 
@@ -448,12 +444,12 @@ void read_kinect(libfreenect2::SyncMultiFrameListener *listener, libfreenect2::F
     }
     if (enable_depth)
     {
-      viewer.addFrame("ir", ir);
-      viewer.addFrame("depth", depth);
+      viewer->addFrame("ir", ir);
+      viewer->addFrame("depth", depth);
     }
     if (enable_rgb && enable_depth)
     {
-      viewer.addFrame("registered", &registered);
+      viewer->addFrame("registered", registered);
     }
 
     protonect_shutdown = protonect_shutdown || viewer.render();
@@ -489,19 +485,19 @@ int main(int argc, char *argv[])
   std::cout<<"\n"<<pKinectConfiguration->framemax;
   */
 
-  //libfreenect2::SyncMultiFrameListener listener = *(pKinectConfiguration->listener);
+  libfreenect2::SyncMultiFrameListener *listener = pKinectConfiguration->listener;
   //libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
-  //bool enable_rgb = *(pKinectConfiguration->enable_rgb);
-  //bool enable_depth = *(pKinectConfiguration->enable_depth);
-  //libfreenect2::Registration *registration = (pKinectConfiguration->registration);
-  //size_t framecount = *(pKinectConfiguration->framecount);
-  //bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
-  //Viewer viewer = *(pKinectConfiguration->viewer);
-  //bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
-  //libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
-  //libfreenect2::Frame registered = *(pKinectConfiguration->registered);
-  //libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
-  //size_t framemax = *(pKinectConfiguration->framemax);
+  bool enable_rgb = *(pKinectConfiguration->enable_rgb);
+  bool enable_depth = *(pKinectConfiguration->enable_depth);
+  libfreenect2::Registration *registration = (pKinectConfiguration->registration);
+  size_t framecount = *(pKinectConfiguration->framecount);
+  bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
+  Viewer *viewer = pKinectConfiguration->viewer;
+  bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
+  libfreenect2::Frame *undistorted = pKinectConfiguration->undistorted;
+  libfreenect2::Frame *registered = pKinectConfiguration->registered;
+  libfreenect2::Freenect2Device *dev = (pKinectConfiguration->dev);
+  size_t framemax = *(pKinectConfiguration->framemax);
   
   return 0;
 
