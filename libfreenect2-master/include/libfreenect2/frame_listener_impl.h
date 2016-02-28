@@ -48,6 +48,10 @@ class SyncMultiFrameListenerImpl;
 class LIBFREENECT2_API SyncMultiFrameListener : public FrameListener
 {
 public:
+  SyncMultiFrameListener(void)
+  {
+  }
+
   /**
    * @param frame_types Use bitwise or to combine multiple types, e.g. `Frame::Ir | Frame::Depth`.
    */
