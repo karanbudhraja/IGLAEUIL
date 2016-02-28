@@ -62,7 +62,7 @@ struct kinectConfigStruct
   libfreenect2::Freenect2Device *dev;
   size_t framemax;
 
-  kinectConfigStruct():undistorted(512,424,4), registered(512, 424, 4)
+  kinectConfigStruct(int types):undistorted(512,424,4), registered(512, 424, 4), listener(types)
   {
   }
 };
@@ -384,7 +384,7 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   */
 
   /* assign configuration values */
-  kinectConfigStruct kinectConfiguration;
+  kinectConfigStruct kinectConfiguration(types);
   kinectConfiguration.listener = &listener;
   kinectConfiguration.frames = &frames;
   kinectConfiguration.enable_rgb = &enable_rgb;
