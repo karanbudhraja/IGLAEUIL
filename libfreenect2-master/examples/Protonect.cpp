@@ -1,11 +1,4 @@
 /*
- * author (edits): karan k. budhraja
- *
- * email: karanb1@umbc.edu
- */
-
-
-/*
  * This file is part of the OpenKinect Project. http://www.openkinect.org
  *
  * Copyright (c) 2011 individual OpenKinect contributors. See the CONTRIB file
@@ -48,7 +41,7 @@
 #include "viewer.h"
 #endif
 
-/* prototypes of segmented functions */
+/* karan adding prototypes of created functions */
 void close_connection(libfreenect2::Freenect2Device *dev,  libfreenect2::Registration *registration);
 void read_kinect(libfreenect2::SyncMultiFrameListener &listener, libfreenect2::FrameMap &frames, bool &enable_rgb, bool &enable_depth, libfreenect2::Registration *registration, size_t &framecount, bool &protonect_shutdown, Viewer &viewer, bool &viewer_enabled, libfreenect2::Frame &undistorted, libfreenect2::Frame &registered);
 
@@ -153,6 +146,8 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   {
     binpath = program_path.substr(0, executable_name_idx);
   }
+
+  /* --------------------------- karan marking end of initialization ---------------------- */
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
   // avoid flooing the very slow Windows console with debug messages
@@ -362,8 +357,9 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   viewer_enabled = false;
 #endif
 
+  /* --------------------------- karan marking end of initialization ---------------------- */
+
   /* print everything */
-  /*
   std::cout<<"\n printing in initialization";
   std::cout<<"\n"<<(&listener);
   std::cout<<"\n"<<(&frames);
@@ -378,7 +374,6 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   std::cout<<"\n"<<(&registered);
   std::cout<<"\n"<<(dev);
   std::cout<<"\n"<<(&framemax);
-  */
 
   /* assign configuration values */
   kinectConfigStruct kinectConfiguration;
@@ -396,7 +391,7 @@ kinectConfigStruct* start_connection(int argc, char *argv[])
   kinectConfiguration.dev = dev;
   kinectConfiguration.framemax = &framemax;
 
-  //std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
+  std::cout<<"\n configuration variable address in function: "<<&kinectConfiguration;
 
   return &kinectConfiguration;
 }
@@ -466,10 +461,9 @@ int main(int argc, char *argv[])
   /* initialize connection */
   kinectConfigStruct *pKinectConfiguration = start_connection(argc, argv);
 
-  //std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
+  std::cout<<"\n configuration variable address in main: "<<pKinectConfiguration;
 
   /* print everything */
-  /*
   std::cout<<"\n printing in main";
   std::cout<<"\n"<<pKinectConfiguration->listener;
   std::cout<<"\n"<<pKinectConfiguration->frames;
@@ -484,21 +478,21 @@ int main(int argc, char *argv[])
   std::cout<<"\n"<<pKinectConfiguration->registered;
   std::cout<<"\n"<<pKinectConfiguration->dev;
   std::cout<<"\n"<<pKinectConfiguration->framemax;
-  */
 
-  libfreenect2::SyncMultiFrameListener listener = *(pKinectConfiguration->listener);
-  libfreenect2::FrameMap frames = *(pKinectConfiguration->frames);
-  bool enable_rgb = *(pKinectConfiguration->enable_rgb);
-  bool enable_depth = *(pKinectConfiguration->enable_depth);
-  //libfreenect2::Registration *registration = &(pKinectConfiguration->registration);
-  size_t framecount = *(pKinectConfiguration->framecount);
-  bool protonect_shutdown = *(pKinectConfiguration->protonect_shutdown);
-  Viewer viewer = *(pKinectConfiguration->viewer);
-  bool viewer_enabled = *(pKinectConfiguration->viewer_enabled);
-  libfreenect2::Frame undistorted = *(pKinectConfiguration->undistorted);
-  libfreenect2::Frame registered = *(pKinectConfiguration->registered);
-  //libfreenect2::Freenect2Device *dev = &(pKinectConfiguration->dev);
-  size_t framemax = *(pKinectConfiguration->framemax);
+  //libfreenect2::SyncMultiFrameListener listener = *((libfreenect2::SyncMultiFrameListener*)kinectConfiguration[0]);
+  //libfreenect2::FrameMap frames = *((libfreenect2::FrameMap*)kinectConfiguration[1]);
+  //bool *enable_rgb = (bool*)(kinectConfiguration + 2*sizeof(void*));
+  //bool *enable_depth = *((bool*)kinectConfiguration[3]);
+  //libfreenect2::Registration *registration = ((libfreenect2::Registration*)kinectConfiguration[4]);
+  //size_t framecount = *((size_t*)kinectConfiguration[5]);
+  //bool *protonect_shutdown = *((bool*)kinectConfiguration[6]);
+  //Viewer viewer = *((Viewer*)kinectConfiguration[7]);
+  //bool viewer_enabled = *((bool*)kinectConfiguration[8]);
+  //libfreenect2::Frame undistorted = *((libfreenect2::Frame*)kinectConfiguration[9]);
+  //libfreenect2::Frame registered = *((libfreenect2::Frame*)kinectConfiguration[10]);
+  //libfreenect2::Freenect2Device *dev = ((libfreenect2::Freenect2Device*)kinectConfiguration[11]);
+  //size_t *framemax = *((size_t*)kinectConfiguration[12]);
+
   
   return 0;
 
@@ -508,10 +502,8 @@ int main(int argc, char *argv[])
   {
     read_kinect(listener, frames, enable_rgb, enable_depth, registration, framecount, protonect_shutdown, viewer, viewer_enabled, undistorted, registered);
   }
-
   /* close connection */
   close_connection(dev, registration);
-
   /* default return value */
   return 0;
 #endif
