@@ -75,11 +75,6 @@ class LIBFREENECT2_API Frame
   uint32_t status;        ///< Reserved. To be defined in 0.2.
   Format format;          ///< Reserved. To be defined in 0.2.
 
-  Frame(void)
-  {
-    Frame(512, 424, 4);
-  }
-
   /** Construct a new frame.
    * @param width Width in pixel
    * @param height Height in pixel
