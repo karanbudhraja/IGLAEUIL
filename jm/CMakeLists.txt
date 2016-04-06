@@ -12,7 +12,16 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   pcl_conversions
   pcl_ros
+  
 )
+find_package(PCL REQUIRED)
+set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+set(PCL_BUILD_TYPE Release)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -197,6 +206,17 @@ target_link_libraries(main ${catkin_LIBRARIES})
 add_executable(pcd src/pcd.cpp)
 target_link_libraries(pcd ${catkin_LIBRARIES})
 
-add_executable(pc src/pc.cpp)
-target_link_libraries(pc ${catkin_LIBRARIES})
+add_executable(pc src/pc.cpp src/vision.cpp src/lang.cpp src/model.cpp) 
+target_link_libraries(pc ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
+add_executable(seg src/seg.cpp)
+target_link_libraries(seg ${catkin_LIBRARIES})
+
+add_executable(clust src/clust.cpp)
+target_link_libraries(clust ${catkin_LIBRARIES})
+
+#add_executable(kd src/kd.cpp)
+#target_link_libraries(kd ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(save src/save.cpp)
+target_link_libraries(save ${catkin_LIBRARIES})

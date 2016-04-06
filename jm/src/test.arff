@@ -1,0 +1,23 @@
+@RELATION jmmodel 
+
+@attribute 'r' numeric
+@attribute 'g' numeric
+@attribute 'b' numeric
+@attribute 'class' {apple,cshape,cup,object,red,yellow}
+
+@data
+
+170,31,59,red
+170,31,59,cup
+170,31,59,yellow
+170,31,59,object
+170,31,59,red
+170,31,59,cshape
+170,31,59,red
+170,31,59,cup
+170,31,59,red
+170,31,59,apple
+170,31,59,yellow
+170,31,59,cshape
+170,31,59,red
+170,31,59,red
